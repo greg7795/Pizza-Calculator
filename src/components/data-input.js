@@ -9,7 +9,9 @@ export default function DataInput({temps, setFormData, setReadyToCalculate, form
 
     useEffect(() =>{
         if(selectedTemp > 0){
-            const tempUsed = temps.find((t) => t.tempF === selectedTemp)
+            console.info(typeof selectedTemp);
+            const tempUsed = temps.find((t) => t.tempF === parseInt(selectedTemp))
+            
             setHoursOptions(tempUsed.hours.filter((f) => f > 0 ));
         }
     // eslint-disable-next-line
@@ -59,7 +61,7 @@ export default function DataInput({temps, setFormData, setReadyToCalculate, form
                 setSelectedTemp(event.target.value);
                 break;
             case "fermentationHours":
-                let fermTemp = temps.find(t => t.tempF === inputData["fermentationTemp"]);
+                let fermTemp = temps.find(t => t.tempF === parseInt(inputData["fermentationTemp"]));
                 let index = fermTemp.hours.indexOf(parseInt(event.target.value));
                 tempInputData["fermentationHours"] = [event.target.value, index];
                 break;
