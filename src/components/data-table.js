@@ -41,6 +41,7 @@ export default function DataTable({formData}){
       console.info("yeast data empty");
 
     }
+  // eslint-disable-next-line
   }, [yeastData])
 
   function calculateTotalFlour(){
@@ -48,7 +49,7 @@ export default function DataTable({formData}){
     let pizzaWeight = parseInt(formData["pizzaWeight"]);
     let hydration = parseFloat(formData["hydrationPercentage"] / 100);
     let salt = parseFloat(formData["saltPercentage"] / 100);
-    let yeast = yeastData.find((y) => y.type == formData["yeastType"]);
+    let yeast = yeastData.find((y) => y.type === formData["yeastType"]);
     let yeastPercentage = yeast.percentages[formData["fermentationHours"][1]] / 100;
     let pizzas = parseInt(formData["numberOfPizzas"]);
 
@@ -62,7 +63,7 @@ export default function DataTable({formData}){
 
   function calculateWaterTemp(){
 
-    let mixFactor = formData["mixType"] == "By Hand" ? HAND_MIX_FACTOR : MIXER_FACTOR;
+    let mixFactor = formData["mixType"] === "By Hand" ? HAND_MIX_FACTOR : MIXER_FACTOR;
     let fdt = parseInt(formData["finalDoughTemp"]);
     let roomTemp = parseInt(formData["roomTemp"]);
     return Math.round((fdt * 3) - (roomTemp * 2) - mixFactor); 
@@ -74,7 +75,7 @@ export default function DataTable({formData}){
   }
 
   function calculateYeastTotal(){
-    let yeast = yeastData.find((y) => y.type == formData["yeastType"]);
+    let yeast = yeastData.find((y) => y.type === formData["yeastType"]);
     let yeastPercentage = yeast.percentages[formData["fermentationHours"][1]] / 100;
     return (flourTotal.current * yeastPercentage).toFixed(4);
 
