@@ -2,6 +2,7 @@ import {useEffect, useState, useRef} from 'react';
 
 export default function DataTable({formData}){
 
+  console.info("DataTable render:");
   const HAND_MIX_FACTOR = 5;
   const MIXER_FACTOR = 20;
 
