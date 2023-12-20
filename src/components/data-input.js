@@ -11,11 +11,9 @@ export default function DataInput({temps, setFormData, setReadyToCalculate, form
         if(selectedTemp > 0){
             console.info(typeof selectedTemp);
             const tempUsed = temps.find((t) => t.tempF === parseInt(selectedTemp))
-            
             setHoursOptions(tempUsed.hours.filter((f) => f > 0 ));
         }
-    // eslint-disable-next-line
-    }, [selectedTemp])
+    }, [selectedTemp, temps])
 
     function initializeInputData(){
         return {

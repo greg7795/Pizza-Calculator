@@ -15,38 +15,36 @@ export default function DataTable({formData}){
   const yeastTotal = useRef(0);
 
   console.info("DataTable render:");
+  
   useEffect(() => {
-
+    console.info("useEffect");
     const fetchYeastData = async () => {
+      console.info("fetching yeast");
       const response = await fetch("/yeast.json");
       const yeast = await response.json();
       setYeastData(yeast);
+      console.info(yeast);
     }
     fetchYeastData();
-  // eslint-disable-next-line
+    
+  
   }, [])
 
-  useEffect(() => {
 
+  function calculateResult(){
     if(yeastData.length){
-      console.info("Running Calc");
-      const runCalculations = () => {
-        flourTotal.current = calculateTotalFlour();
-        waterTotal.current = calculateTotalWater();
-        waterTemp.current = calculateWaterTemp();
-        saltTotal.current = calculateSaltTotal();
-        yeastTotal.current = calculateYeastTotal();
-      }
-      runCalculations();
-
+      console.info("Calc Reult with yeast data")
+      flourTotal.current = calculateTotalFlour();
+      waterTotal.current = calculateTotalWater();
+      waterTemp.current = calculateWaterTemp();
+      saltTotal.current = calculateTotalSalt();
+      yeastTotal.current = calculateYeastTotal();
     } else {
-
-      console.info("yeast data empty");
-
+      console.info("No yeast data yet");
     }
-  // eslint-disable-next-line
-  }, [yeastData])
+  }
 
+  calculateResult();
 
   function calculateTotalFlour(){
 
@@ -74,7 +72,7 @@ export default function DataTable({formData}){
 
   }
 
-  function calculateSaltTotal(){
+  function calculateTotalSalt(){
     return flourTotal.current * parseFloat(formData["saltPercentage"] / 100).toFixed(2);
   }
 
