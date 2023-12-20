@@ -7,7 +7,7 @@ export default function DataTable({formData}){
 
   const [yeastData, setYeastData] = useState([]);
 
-  const flourTotal = useRef(10);
+  const flourTotal = useRef(0);
   const waterTotal = useRef(0);
   const waterTemp = useRef(0);
   const saltTotal = useRef(0);
@@ -19,10 +19,6 @@ export default function DataTable({formData}){
       const response = await fetch("/yeast.json");
       const yeast = await response.json();
       setYeastData(yeast);
-      console.info("YeastData in fetch");
-      console.dir(yeast);
-      console.info("form data");
-      console.dir(formData);
     }
     fetchYeastData();
   // eslint-disable-next-line
@@ -32,17 +28,14 @@ export default function DataTable({formData}){
 
     if(yeastData.length){
 
-      flourTotal.current = calculateTotalFlour();
-      waterTotal.current = calculateTotalWater();
-      waterTemp.current = calculateWaterTemp();
-      saltTotal.current = calculateSaltTotal();
-      yeastTotal.current = calculateYeastTotal();
-
-      console.info(calculateTotalFlour());
-      console.info(calculateTotalWater());
-      console.info(calculateWaterTemp());
-      console.info(calculateSaltTotal());
-      console.info(calculateYeastTotal());
+      const runCalculations = () => {
+        flourTotal.current = calculateTotalFlour();
+        waterTotal.current = calculateTotalWater();
+        waterTemp.current = calculateWaterTemp();
+        saltTotal.current = calculateSaltTotal();
+        yeastTotal.current = calculateYeastTotal();
+      }
+      runCalculations();
 
     } else {
 
@@ -51,6 +44,7 @@ export default function DataTable({formData}){
     }
   // eslint-disable-next-line
   }, [yeastData])
+
 
   function calculateTotalFlour(){
 
