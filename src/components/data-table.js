@@ -2,7 +2,7 @@ import {useEffect, useState, useRef} from 'react';
 
 export default function DataTable({formData}){
 
-  console.info("DataTable render:");
+  
   const HAND_MIX_FACTOR = 5;
   const MIXER_FACTOR = 20;
 
@@ -14,6 +14,7 @@ export default function DataTable({formData}){
   const saltTotal = useRef(0);
   const yeastTotal = useRef(0);
 
+  console.info("DataTable render:");
   useEffect(() => {
 
     const fetchYeastData = async () => {
@@ -28,7 +29,7 @@ export default function DataTable({formData}){
   useEffect(() => {
 
     if(yeastData.length){
-
+      console.info("Running Calc");
       const runCalculations = () => {
         flourTotal.current = calculateTotalFlour();
         waterTotal.current = calculateTotalWater();
