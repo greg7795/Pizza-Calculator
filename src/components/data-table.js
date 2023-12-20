@@ -25,7 +25,7 @@ export default function DataTable({formData}){
       console.dir(formData);
     }
     fetchYeastData();
-
+  // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
