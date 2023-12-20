@@ -1,6 +1,6 @@
 Calculate the amount of flour, water, yeast, and salt needed for your pizza dough based on specific factors. 
 
-The formulas and data used are based on information found in this repo:
+Some of the the formulas and data used are based on information found in this repo:
 https://github.com/hendricius/pizza-dough
 
 and the yeast model found at:
