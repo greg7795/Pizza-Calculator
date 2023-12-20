@@ -36,7 +36,13 @@ export default function DataTable({formData}){
       waterTotal.current = calculateTotalWater();
       waterTemp.current = calculateWaterTemp();
       saltTotal.current = calculateSaltTotal();
-      yeastTotal.current = calculateYeastTotal()
+      yeastTotal.current = calculateYeastTotal();
+
+      console.info(calculateTotalFlour());
+      console.info(calculateTotalWater());
+      console.info(calculateWaterTemp());
+      console.info(calculateSaltTotal());
+      console.info(calculateYeastTotal());
 
     } else {
 
