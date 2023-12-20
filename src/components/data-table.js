@@ -21,6 +21,8 @@ export default function DataTable({formData}){
       setYeastData(yeast);
       console.info("YeastData in fetch");
       console.dir(yeast);
+      console.info("form data");
+      console.dir(formData);
     }
     fetchYeastData();
 
