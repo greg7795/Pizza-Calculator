@@ -7,7 +7,7 @@ export default function DataTable({formData}){
 
   const [yeastData, setYeastData] = useState([]);
 
-  const flourTotal = useRef(0);
+  const flourTotal = useRef(10);
   const waterTotal = useRef(0);
   const waterTemp = useRef(0);
   const saltTotal = useRef(0);
